@@ -3,7 +3,6 @@ package fr.things;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import fr.characters.Player;
@@ -14,8 +13,8 @@ public class Wall {
 	private boolean destructed;
 	
 	
-	// Initialisation des murs lors de leur création (à chacun).
-	// Leur position en ordonnées et leur hauteur sont aléatoires donc données en argument (cf WallGen.java)
+	// Initialisation des murs lors de leur crÃ©ation (Ã  chacun).
+	// Leur position en ordonnÃ©es et leur hauteur sont alÃ©atoires donc donnÃ©es en argument (cf WallGen.java)
 	public Wall(double y,double height,Player player) {
 		this.y=y;
 		this.height=height;
@@ -27,15 +26,15 @@ public class Wall {
 	}
 	
 	// Affichage
-	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		g.setColor(Color.green);
 		g.fillRect((float)x, (float)y,(float) width, (float)height);
 	}
 	
 	
-	// Mise à jour des murs (60 fois par seconde)
-	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-		// delta = temps qui s'écoule entre 2 frame (varie pour s'approcher au plus de 60 frame par secondes (selon le lag)
+	// Mise ï¿½ jour des murs (60 fois par seconde)
+	public void update(GameContainer container, StateBasedGame game, int delta) {
+		// delta = temps qui s'Ã©coule entre 2 frame (varie pour s'approcher au plus de 60 frame par secondes (selon le lag)
 		x+=speedX*delta;
 
 		if(colPlayer()) {
@@ -50,12 +49,12 @@ public class Wall {
 	}
 
 	
-	// Renvoie la valeur détruite (appelée par le World)
+	// Renvoie la valeur dÃ©truite (appelÃ©e par le World)
 	public boolean isDestructed() {
 		return destructed;
 	}
 
-	// Met l'état du mur à détruit lorsqu'il touche le joueur, permet au World de le faire disparaitre
+	// Met l'Ã©tat du mur Ã  dÃ©truit lorsqu'il touche le joueur, permet au World de le faire disparaitre
 	public void setDestructed(boolean destructed) {
 		this.destructed = destructed;
 	}

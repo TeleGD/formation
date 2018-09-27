@@ -4,7 +4,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Player {
@@ -102,7 +101,7 @@ public class Player {
 	}
 	
 	
-	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		// Affichage du carré bleu
 		g.setColor(Color.blue);
 		g.fillRect((float)x, (float)y, width, height);
@@ -112,7 +111,7 @@ public class Player {
 		g.drawString(""+col, 399, 10);
 	}
 	
-	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+	public void update(GameContainer container, StateBasedGame game, int delta) {
 		horizontalMove();
 		verticalMove();
 		x+=speedX*delta;

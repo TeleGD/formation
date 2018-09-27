@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -23,22 +21,22 @@ public class World extends BasicGameState {
 	private WallGen wallGen;
 	
 	@Override
-	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
-		// Création du joueur
+	public void init(GameContainer arg0, StateBasedGame arg1) {
+		// Crï¿½ation du joueur
 		Nico=new Player();
 		
-		// Création de la liste contenant les murs
+		// Crï¿½ation de la liste contenant les murs
 		walls=new ArrayList<Wall>();
 		
-		// Initialisation de cette liste, le premier mur de toutes les parties sera le même. Les suivants sont aléatoires
+		// Initialisation de cette liste, le premier mur de toutes les parties sera le mï¿½me. Les suivants sont alï¿½atoires
 		walls.add(new Wall(20,150,Nico));
 		
-		// Création du générateur de mur
+		// Crï¿½ation du gï¿½nï¿½rateur de mur
 		wallGen = new WallGen(walls,Nico);
 	}
 
 	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException {
+	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) {
 		// Affichage du joueur
 		Nico.render(arg0, arg1, arg2);
 		
@@ -49,23 +47,23 @@ public class World extends BasicGameState {
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException {
-		// Mise à jour du joueur
+	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) {
+		// Mise ï¿½ jour du joueur
 		Nico.update(arg0, arg1, arg2);
 		
-		// Mise à jour de tous les murs (1 par 1)
+		// Mise ï¿½ jour de tous les murs (1 par 1)
 		for(Wall w:walls) { // for each
 			w.update(arg0, arg1, arg2);
 		}
 		
-		// Destruction des murs s'il y a eu collision (on les retire de la liste des murs existants et java les supprime car ils ne sont plus reliés à rien)
+		// Destruction des murs s'il y a eu collision (on les retire de la liste des murs existants et java les supprime car ils ne sont plus reliï¿½s ï¿½ rien)
 		for(int i=0;i<walls.size();i++) {
 			if(walls.get(i).isDestructed()) {
 				walls.remove(i);
 			}
 		}
 		
-		// Mise à jour du générateur de murs (ajout d'un nouveau mur ?)
+		// Mise ï¿½ jour du gï¿½nï¿½rateur de murs (ajout d'un nouveau mur ?)
 		wallGen.update(arg0, arg1, arg2);
 	}
 
