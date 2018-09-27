@@ -103,7 +103,7 @@ public class Player {
 	
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		// Affichage du carré bleu
+		// Affichage du carrÃ© bleu
 		g.setColor(Color.blue);
 		g.fillRect((float)x, (float)y, width, height);
 		
@@ -121,7 +121,7 @@ public class Player {
 		newY=y+speedY;
 	}
 	
-	// déplacement selon les flèches gauche et droite appuyées (détection des flèches multiples)
+	// dÃ©placement selon les flÃ¨ches gauche et droite appuyÃ©es (dÃ©tection des flÃ¨ches multiples)
 	private void horizontalMove() {
 		speedX = 0;
 		if ((leftPress && !rightPress) || (leftPress && rightPress && !droitegauche)) {
@@ -138,7 +138,7 @@ public class Player {
 		}
 	}
 	
-	// déplacement selon les flèches haut et bas appuyées (détection des flèches multiples)
+	// dÃ©placement selon les flÃ¨ches haut et bas appuyÃ©es (dÃ©tection des flÃ¨ches multiples)
 	private void verticalMove() {
 		speedY = 0;
 		if ((upPress && !downPress) || (upPress && downPress && !hautbas)) {
@@ -156,7 +156,7 @@ public class Player {
 	}
 	
 	
-	// Détection des entrées de clavier (relache une touche)
+	// DÃ©tection des entrÃ©es de clavier (relache une touche)
 	public void keyReleased(int key, char c) {
 
 		switch (key) {
@@ -178,17 +178,17 @@ public class Player {
 		}
 	}
 	
-	// Détection des entrées de clavier (appuie sur une touche)
+	// DÃ©tection des entrÃ©es de clavier (appuie sur une touche)
 	public void keyPressed(int key, char c) {
 		switch (key) {
 		case Input.KEY_UP:
 			upPress = true;
-			hautbas=true;
+			hautbas=false;
 			break;
 
 		case Input.KEY_DOWN:
 			downPress = true;
-			hautbas=false;
+			hautbas=true;
 			break;
 
 		case Input.KEY_LEFT:
@@ -202,7 +202,7 @@ public class Player {
 		}
 	}
 	
-	// Incrémentation du compteur de collisions (appelé par les murs lors d'une collision)
+	// IncrÃ©mentation du compteur de collisions (appelÃ© par les murs lors d'une collision)
 	public void collision() {
 		this.col+=1;
 	}
